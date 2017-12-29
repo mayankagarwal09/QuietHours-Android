@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Quiet Hours</string>
+    <string name="grant_permission">Please Grant DND access to this app to change Ringer States</string>
+    <string name="select_slots">Select Slots</string>
+    <string name="entered_slots">Entered Slots:</string>
+    <string name="grant_button">Grant</string>
+    <string name="clear_button">Clear</string>
+    <string name="done_button">Done</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide1_title">Service</string>
+    <string name="slide1_description">No classes?No Problem!\n Just go to Settings and turn off the service. Its that Simple!</string>
+    <string name="slide2_title">Remove Slot</string>
+    <string name="slide2_description">Want to remove a slot?\nIts just a swipe away!\nOr deselect the slot!</string>
+    <string name="slide3_title">Continuous Slots</string>
+    <string name="slide3_description">Have continuous classes?\nNo problem! Just turn on continuous classes mode and the phone will
+    not come to ringer for the 10 mins gap  between classes!</string>
+
+    <string name="developer">Developer</string>
+    <string name="developer_name">Mayank Agarwal</string>
+    <string name="designer">Designer</string>
+    <string name="designer_name">Divyanshu Nandwani</string>
+    <string name="build_version">Build Version : 1.3</string>
+</resources>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/cardview_light_background"
+    tools:context="com.mayanktechnologies.alarmmanager.MainActivity">
+
+    <android.support.constraint.Guideline
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintGuide_percent="0.2"
+        android:id="@+id/left_guideline_button"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="77dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.8"
+        android:id="@+id/right_guideline_button"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="307dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.1"
+        android:id="@+id/guideline_ten_percent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="51dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.2"
+        android:id="@+id/guideline_twenty_percent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="102dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.32"
+        android:id="@+id/guideline_thirtytwo_percent"
+        android:orientation="horizontal" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.4"
+        android:id="@+id/guideline_fourty_percent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="205dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.45"
+        android:id="@+id/guideline_fourtyfive_percent"
+        android:orientation="horizontal"
+        />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.8"
+        android:id="@+id/guideline_eighty_percent"
+        android:orientation="horizontal"
+        />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.92"
+        android:id="@+id/guideline_ninety_percent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="486dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+    <Button
+        android:id="@+id/select_slots_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text="@string/select_slots"
+        android:textSize="@dimen/select_slot_button_textsize"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_twenty_percent"
+        app:layout_constraintRight_toLeftOf="@+id/right_guideline_button"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline_button"
+        app:layout_constraintTop_toTopOf="@+id/guideline_ten_percent" />
+
+    <LinearLayout
+        android:id="@+id/entered_slot_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="31dp"
+        android:background="#DCDCDC"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_thirtytwo_percent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_twenty_percent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/entered_slots"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/entered_slots_textsize"
+            />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_ninety_percent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_thirtytwo_percent">
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/not_granted_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="0dp"
+        android:background="@android:color/black"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_ninety_percent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:lines="2"
+            android:text="@string/grant_permission"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <Button
+            android:id="@+id/grant_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="3.5"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/grant_button"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_blue_dark" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

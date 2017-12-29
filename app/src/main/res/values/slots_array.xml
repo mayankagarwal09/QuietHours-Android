@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="slots_array">
+        <item>A1</item>
+        <item>B1</item>
+        <item>C1</item>
+        <item>D1</item>
+        <item>E1</item>
+        <item>F1</item>
+        <item>G1</item>
+
+        <item>TA1</item>
+        <item>TB1</item>
+        <item>TC1</item>
+        <item>TD1</item>
+        <item>TE1</item>
+        <item>TF1</item>
+        <item>TG1</item>
+
+        <item>TAA1</item>
+        <item>TCC1</item>
+
+        <item>A2</item>
+        <item>B2</item>
+        <item>C2</item>
+        <item>D2</item>
+        <item>E2</item>
+        <item>F2</item>
+        <item>G2</item>
+
+        <item>TA2</item>
+        <item>TB2</item>
+        <item>TC2</item>
+        <item>TD2</item>
+        <item>TE2</item>
+        <item>TF2</item>
+        <item>TG2</item>
+
+        <item>TAA2</item>
+        <item>TBB2</item>
+        <item>TCC2</item>
+        <item>TDD2</item>
+
+        <item>V1</item>
+        <item>V2</item>
+        <item>V3</item>
+        <item>V4</item>
+        <item>V5</item>
+        <item>V6</item>
+        <item>V7</item>
+
+        <item>V8</item>
+        <item>V9</item>
+        <item>V10</item>
+        <item>V11</item>
+
+        <item>W21</item>
+        <item>W22</item>
+
+        <item>X11</item>
+        <item>X12</item>
+        <item>X21</item>
+
+        <item>Y11</item>
+        <item>Y12</item>
+        <item>Y21</item>
+
+        <item>Z21</item>
+
+        <item>L1+L2</item>
+        <item>L3+L4</item>
+        <item>L5+L6</item>
+        <item>L7+L8</item>
+        <item>L9+L10</item>
+        <item>L11+L12</item>
+        <item>L13+L14</item>
+        <item>L15+L16</item>
+        <item>L19+L20</item>
+        <item>L21+L22</item>
+        <item>L23+L24</item>
+        <item>L25+L26</item>
+        <item>L27+L28</item>
+        <item>L29+L30</item>
+        <item>L31+L32</item>
+        <item>L33+L34</item>
+        <item>L35+L36</item>
+        <item>L37+L38</item>
+        <item>L39+L40</item>
+        <item>L41+L42</item>
+        <item>L43+L44</item>
+        <item>L45+L46</item>
+        <item>L47+L48</item>
+        <item>L49+L50</item>
+        <item>L51+L52</item>
+        <item>L53+L54</item>
+        <item>L55+L56</item>
+        <item>L57+L58</item>
+        <item>L59+L60</item>
+
+        <item>L71+L72</item>
+        <item>L73+L74</item>
+        <item>L75+L76</item>
+        <item>L77+L78</item>
+        <item>L79+L80</item>
+        <item>L81+L82</item>
+        <item>L83+L84</item>
+        <item>L85+L86</item>
+        <item>L87+L88</item>
+        <item>L89+L90</item>
+        <item>L91+L92</item>
+        <item>L93+L94</item>
+
+    </string-array>
+</resources>

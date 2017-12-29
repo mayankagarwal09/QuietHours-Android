@@ -1,0 +1,45 @@
+<resources>
+<dimen name="spinner_margin_top">50.0dp</dimen>
+<dimen name="recycler_view_bottom_margin">59.999996dp</dimen>
+<dimen name="recycler_view_top_margin">29.999998dp</dimen>
+<dimen name="fab_top_margin">25.0dp</dimen>
+<dimen name="fab_dimension">60.0dp</dimen>
+<dimen name="spinner_layout_textsize">25.0sp</dimen>
+<dimen name="spinner_item_textsize">22.0sp</dimen>
+<dimen name="spinner_item_height">50.0dp</dimen>
+<dimen name="list_row_textsize">25sp</dimen>
+<dimen name="list_row_cardview_height">60dp</dimen>
+    <dimen name="entered_slots_textsize">20sp</dimen>
+    <dimen name="list_row_logo_dimension">45dp</dimen>
+    <dimen name="list_row_slot_timings">25dp</dimen>
+    <dimen name="list_row_slot_margin_left">8dp</dimen>
+    <dimen name="list_row_slot_timings_textsize">14sp</dimen>
+    <dimen name="list_row_imageview_margin_left">8dp</dimen>
+    <dimen name="list_row_slot_timings_margin_left">5dp</dimen>
+    <dimen name="list_row_slot_timings_margin_right">10dp</dimen>
+    <dimen name="list_row_slot_timings_margin_top">10dp</dimen>
+    <dimen name="list_row_slot_timings_day_margin_right">8dp</dimen>
+    <dimen name="select_slot_button_textsize">16sp</dimen>
+    <dimen name="slotSelect_activity_button_textsize">16sp</dimen>
+    <dimen name="slotSelect_row_margin">16dp</dimen>
+    <dimen name="slotSelect_row_textview_marginLeft">30dp</dimen>
+    <dimen name="fb_badge_size">40dp</dimen>
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="img_width">225dp</dimen>
+    <dimen name="img_height">320dp</dimen>
+    <dimen name="slide_title">35sp</dimen>
+    <dimen name="margin_bottom_desc">15dp</dimen>
+    <dimen name="slide_desc">18sp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
+    <dimen name="about_name_teztsize">20sp</dimen>
+    <dimen name="about_role_textsize">18sp</dimen>
+    <dimen name="about_margin_left">20dp</dimen>
+    <dimen name="about_role_margin_bottom">10dp</dimen>
+    <dimen name="about_margin_top">5dp</dimen>
+</resources>

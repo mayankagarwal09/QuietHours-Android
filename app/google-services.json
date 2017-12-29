@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "422868446400",
+    "firebase_url": "https://quiet-hours.firebaseio.com",
+    "project_id": "quiet-hours",
+    "storage_bucket": "quiet-hours.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422868446400:android:40097a250572853c",
+        "android_client_info": {
+          "package_name": "com.mayanktechnologies.alarmmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422868446400-8sgipdkdaosrj2k2ijvj4pejht28cgm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCZjqb3s62cW6sYUxi62HXOWF3Ufd042s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

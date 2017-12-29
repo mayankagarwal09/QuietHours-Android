@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff673bb7</color>
+    <color name="colorPrimaryDark">#ff512da7</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBlue">#3f51b5</color>
+    <color name="fabRipple">#1a94ff</color>
+    <color name="colorActive">#669999</color>
+    <color name="colorHighlight">#a6a6a6</color>
+    <color name="colorBlueDark">#303f9f</color>
+
+    <color name="bg_slider_screen1">#f4b241</color>
+    <color name="bg_slider_screen2">#16bc7d</color>
+    <color name="bg_slider_screen3">#3395ff</color>
+    <!-- dots inactive colors -->
+    <color name="dot_inactive_screen1">#ffa000</color>
+    <color name="dot_inactive_screen2">#008c57</color>
+    <color name="dot_inactive_screen3">#2278d4</color>
+    <!-- dots active colors -->
+    <color name="dot_active_screen1">#f9c772</color>
+    <color name="dot_active_screen2">#74f7c5</color>
+    <color name="dot_active_screen3">#93c6fd</color>
+    <array name="array_dot_active">
+        <item>@color/dot_active_screen1</item>
+        <item>@color/dot_active_screen2</item>
+        <item>@color/dot_active_screen3</item>
+    </array>
+    <array name="array_dot_inactive">
+        <item>@color/dot_inactive_screen1</item>
+        <item>@color/dot_inactive_screen2</item>
+        <item>@color/dot_inactive_screen3</item>
+    </array>
+    
+</resources>
