@@ -7,8 +7,8 @@ android {
         applicationId "com.mayanktechnologies.alarmmanager"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 6
-        versionName "1.3"
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,8 +20,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -32,7 +32,8 @@ dependencies {
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.koushikdutta.ion:ion:2.2.1'
+    implementation 'com.borax12.materialdaterangepicker:library:1.9'
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +47,7 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.borax12.materialdaterangepicker.time.RadialPickerLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     private PendingIntent alarmsilentIntent, alarmringIntent;
     private LinearLayout not_granted_layout,entered_slot_layout;
 
-    Button selectSlotsButton;
+    Button selectSlotsButton, customTimeButton;
     private RecyclerView slot_recycler_view;
     RecyclerViewAdapter listAdapter;
     private ArrayList<PendingIntent> pendingIntentList = new ArrayList<>();
@@ -81,8 +83,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         entered_slot_layout = (LinearLayout) findViewById(R.id.entered_slot_layout);
         slot_recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
         selectSlotsButton = (Button) findViewById(R.id.select_slots_button);
+        customTimeButton=(Button) findViewById(R.id.btn_custom_time);
         checkPermission();
         Constants.SharedPreferenceLoad(getApplicationContext());
+
+
+        customTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customTime();
+            }
+        });
 
 
         selectSlotsButton.setOnClickListener(new View.OnClickListener() {
@@ -437,11 +448,77 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         if (menuselected == R.id.settings_menu) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
-        } else if (menuselected == R.id.about_menu) {
+        }
+        /*
+        else if (menuselected == R.id.about_menu) {
             Intent intent = new Intent(this, About_Activity.class);
             startActivity(intent);
         }
+        */
         return super.onOptionsItemSelected(item);
     }
+
+    public void customTime(){
+        int mHour,mMinute;
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
+
+
+        com.borax12.materialdaterangepicker.time.TimePickerDialog.OnTimeSetListener listener=new com.borax12.materialdaterangepicker.time.TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
+                Log.d("timeSet","start- "+hourOfDay+":"+minute+" end-"+hourOfDayEnd+":"+minuteEnd);
+                setCustomAlarm(hourOfDay,minute,hourOfDayEnd,minuteEnd);
+            }
+        };
+
+        com.borax12.materialdaterangepicker.time.TimePickerDialog timePickerDialog = com.borax12.materialdaterangepicker.time.TimePickerDialog.newInstance(listener, mHour, mMinute, false);
+
+
+
+        timePickerDialog.show(getFragmentManager(), "Timepickerdialog");
+    }
+
+    public void setCustomAlarm(int starthour,int startmin,int endhour,int endmin){
+        Calendar startcalendar = Calendar.getInstance();
+        startcalendar.set(Calendar.HOUR_OF_DAY, starthour);
+        startcalendar.set(Calendar.MINUTE, startmin);
+        startcalendar.set(Calendar.SECOND, 0);
+
+        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        Log.v("Calendar", String.valueOf(dateFormat.format(startcalendar.getTimeInMillis())));
+
+        Intent silentintent = new Intent(getApplicationContext(), AlarmReceiver.class);
+        silentintent.setAction(Constants.ACTION_SILENT);
+        //silentintent.putExtra("start",i);
+        Random random = new Random();
+        int silentRequestCode = random.nextInt();
+        //Constants.pendingIntentRequestCodes.add(silentRequestCode);
+        alarmsilentIntent = PendingIntent.getBroadcast(getApplicationContext(), silentRequestCode, silentintent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, startcalendar.getTimeInMillis(), alarmsilentIntent);
+        //pendingIntentList.add(alarmsilentIntent);
+
+        Calendar endcalendar = Calendar.getInstance();
+        endcalendar.set(Calendar.HOUR_OF_DAY, endhour);
+        endcalendar.set(Calendar.MINUTE, endmin);
+        endcalendar.set(Calendar.SECOND, 0);
+
+
+        if(endcalendar.getTimeInMillis()<startcalendar.getTimeInMillis())
+            endcalendar.set(Calendar.DAY_OF_MONTH,startcalendar.get(Calendar.DAY_OF_MONTH)+1);
+
+        Log.v("Calendar", String.valueOf(dateFormat.format(endcalendar.getTimeInMillis())));
+
+        Intent ringintent = new Intent(getApplicationContext(), AlarmReceiver.class);
+        ringintent.setAction(Constants.ACTION_RING);
+        //ringintent.putExtra("end",i);
+        int ringRequestCode = random.nextInt();
+        //Constants.pendingIntentRequestCodes.add(ringRequestCode);
+        alarmringIntent = PendingIntent.getBroadcast(getApplicationContext(), ringRequestCode, ringintent, 0);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, endcalendar.getTimeInMillis(), alarmringIntent);
+    }
+
+
 }
 

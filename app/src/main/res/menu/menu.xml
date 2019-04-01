@@ -8,10 +8,10 @@
         app:showAsAction="never">
     </item>
 
-    <item
-        android:title="About"
-        android:id="@+id/about_menu"
-        app:showAsAction="never">
-    </item>
+    <!--<item-->
+        <!--android:title="About"-->
+        <!--android:id="@+id/about_menu"-->
+        <!--app:showAsAction="never">-->
+    <!--</item>-->
 
 </menu>

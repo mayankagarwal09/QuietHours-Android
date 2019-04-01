@@ -85,6 +85,20 @@
         tools:layout_editor_absoluteY="486dp"
         tools:layout_editor_absoluteX="0dp" />
 
+    <Button
+        android:id="@+id/btn_custom_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text="Custom Time"
+        android:textSize="@dimen/select_slot_button_textsize"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_ten_percent"
+        app:layout_constraintRight_toLeftOf="@+id/right_guideline_button"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline_button"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/select_slots_button"
