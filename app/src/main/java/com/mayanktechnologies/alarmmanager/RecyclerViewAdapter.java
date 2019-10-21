@@ -1,7 +1,6 @@
 package com.mayanktechnologies.alarmmanager;
 
 import android.content.Context;
-import android.icu.text.DecimalFormat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,19 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
-/**
- * Created by Mayank on 19-07-2017.
- */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ListViewHolder> {
 
-    private ArrayList<slots> slotlist;
+    ArrayList<slots> slotlist;
     final private ListViewItemClick onClickListener;
 
     public RecyclerViewAdapter(ArrayList<slots> slot, ListViewItemClick listViewItemClick){

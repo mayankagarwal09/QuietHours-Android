@@ -3,13 +3,11 @@ package com.mayanktechnologies.alarmmanager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.builder.AnimateGifMode;
@@ -45,10 +42,16 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Checking for first time launch - before calling setContentView()
         prefManager = new PreferenceManager(this);
+        /* original setting
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();
         }
+        */
+
+        //customised setting
+        launchHomeScreen();
+        finish();
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {

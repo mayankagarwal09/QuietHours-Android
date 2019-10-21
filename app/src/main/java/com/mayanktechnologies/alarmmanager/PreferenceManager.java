@@ -3,9 +3,6 @@ package com.mayanktechnologies.alarmmanager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Mayank on 26-09-2017.
- */
 
 public class PreferenceManager {
 

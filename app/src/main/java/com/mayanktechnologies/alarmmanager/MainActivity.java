@@ -4,59 +4,29 @@ import android.Manifest;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
-import android.icu.text.SimpleDateFormat;
-import android.media.AudioManager;
-import android.net.Uri;
 import android.os.Build;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.Loader;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.borax12.materialdaterangepicker.time.RadialPickerLayout;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.ListViewItemClick {
@@ -145,13 +115,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (Constants.SERVICE_STATE == true) {
+        if (Constants.SERVICE_STATE) {
             Constants.removeAlarm(getApplicationContext());
             for(int i=0;i<Constants.removedSlots.size();i++){
                 slots slot=Constants.removedSlots.get(i);
-                if(Constants.selectedSlots.contains(slot)){
-                    Constants.selectedSlots.remove(slot);
-                }
+                Constants.selectedSlots.remove(slot);
             }
             Constants.removedSlots.clear();
 
@@ -160,9 +128,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         else {
             for(int i=0;i<Constants.removedSlots.size();i++){
                 slots slot=Constants.removedSlots.get(i);
-                if(Constants.selectedSlots.contains(slot)){
-                    Constants.selectedSlots.remove(slot);
-                }
+                Constants.selectedSlots.remove(slot);
             }
         }
         listAdapter.notifyDataSetChanged();
@@ -300,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (permissions[0]) {
             case Manifest.permission.ACCESS_NOTIFICATION_POLICY: {
                 // If request is cancelled, the result arrays are empty.
@@ -449,6 +415,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         }
+
         /*
         else if (menuselected == R.id.about_menu) {
             Intent intent = new Intent(this, About_Activity.class);
@@ -469,6 +436,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             @Override
             public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
                 Log.d("timeSet","start- "+hourOfDay+":"+minute+" end-"+hourOfDayEnd+":"+minuteEnd);
+                slots slot = new slots("Custom", new int[]{(Calendar.DAY_OF_WEEK - 2) % 7}, new int[][]{{hourOfDay, minute}}, new int[][]{{hourOfDayEnd, minuteEnd}});
+                Constants.selectedSlots.add(slot);
+                //listAdapter.slotlist.add(slot);
+                listAdapter.notifyDataSetChanged();
                 setCustomAlarm(hourOfDay,minute,hourOfDayEnd,minuteEnd);
             }
         };

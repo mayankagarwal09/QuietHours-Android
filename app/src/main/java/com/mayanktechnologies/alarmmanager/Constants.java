@@ -1,15 +1,10 @@
 package com.mayanktechnologies.alarmmanager;
 
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -21,13 +16,10 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by Mayank on 29-08-2017.
- */
+
 
 public class Constants {
 
@@ -294,47 +286,45 @@ public class Constants {
 
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        for(int i=0;i<Constants.selectedSlots.size();i++)
-        {
+        for (int i = 0; i < Constants.selectedSlots.size(); i++) {
 
-            slots slot=Constants.selectedSlots.get(i);
-            int[] days=slot.getSlot_days();
-            for(int j=0;j<days.length;j++) {
+            slots slot = Constants.selectedSlots.get(i);
 
-                int[] codes=new int[2];
+            if (!slot.slot_title.equals("Custom")) {
+                int[] days = slot.getSlot_days();
+                for (int j = 0; j < days.length; j++) {
 
-
-
-                Log.v("setAlarm","for j entered");
-                int starthour=slot.getSlot_start_time()[j][0];
-                int startmin=slot.getSlot_start_time()[j][1];
-                int day=slot.getSlot_days()[j];
-                Calendar startcalendar = Calendar.getInstance();
-                startcalendar.set(Calendar.DAY_OF_WEEK,day);
-                startcalendar.set(Calendar.HOUR_OF_DAY,starthour);
-                startcalendar.set(Calendar.MINUTE,startmin);
-                startcalendar.set(Calendar.SECOND,0);
+                    int[] codes = new int[2];
 
 
+                    Log.v("setAlarm", "for j entered");
+                    int starthour = slot.getSlot_start_time()[j][0];
+                    int startmin = slot.getSlot_start_time()[j][1];
+                    int day = slot.getSlot_days()[j];
+                    Calendar startcalendar = Calendar.getInstance();
+                    startcalendar.set(Calendar.DAY_OF_WEEK, day);
+                    startcalendar.set(Calendar.HOUR_OF_DAY, starthour);
+                    startcalendar.set(Calendar.MINUTE, startmin);
+                    startcalendar.set(Calendar.SECOND, 0);
 
 
-        java.text.SimpleDateFormat dateFormat=new java.text.SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+                    java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
-                Intent silentintent = new Intent(context, AlarmReceiver.class);
-                silentintent.setAction(Constants.ACTION_SILENT);
-                //silentintent.putExtra("start",i);
-                Random random=new Random();
-                int silentRequestCode=random.nextInt();
+                    Intent silentintent = new Intent(context, AlarmReceiver.class);
+                    silentintent.setAction(Constants.ACTION_SILENT);
+                    //silentintent.putExtra("start",i);
+                    Random random = new Random();
+                    int silentRequestCode = random.nextInt();
 
-                codes[0]=silentRequestCode;
-                Log.v("codesSet",String.valueOf(dateFormat.format(startcalendar.getTimeInMillis())) + "  "+codes[0]);
-               // Constants.pendingIntentRequestCodes.add(silentRequestCode);
+                    codes[0] = silentRequestCode;
+                    Log.v("codesSet", String.valueOf(dateFormat.format(startcalendar.getTimeInMillis())) + "  " + codes[0]);
+                    // Constants.pendingIntentRequestCodes.add(silentRequestCode);
 
-                alarmsilentIntent = PendingIntent.getBroadcast(context,silentRequestCode, silentintent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    alarmsilentIntent = PendingIntent.getBroadcast(context, silentRequestCode, silentintent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                Log.v("CalendarSetStart",String.valueOf(dateFormat.format(startcalendar.getTimeInMillis())));
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startcalendar.getTimeInMillis(),
-                        7 * AlarmManager.INTERVAL_DAY, alarmsilentIntent);
+                    Log.v("CalendarSetStart", String.valueOf(dateFormat.format(startcalendar.getTimeInMillis())));
+                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startcalendar.getTimeInMillis(),
+                            7 * AlarmManager.INTERVAL_DAY, alarmsilentIntent);
                 /*
                 if(startcalendar.getTimeInMillis()>System.currentTimeMillis()) {
                     Log.v("CalendarSetStart",String.valueOf(dateFormat.format(startcalendar.getTimeInMillis())));
@@ -347,47 +337,47 @@ public class Constants {
                 }
                 */
 
-                int endhour=slot.getSlot_end_time()[j][0];
-                int endmin=slot.getSlot_end_time()[j][1];
-                Calendar endcalendar=Calendar.getInstance();
-                endcalendar.set(Calendar.DAY_OF_WEEK,day);
-                endcalendar.set(Calendar.HOUR_OF_DAY,endhour);
-                endcalendar.set(Calendar.MINUTE,endmin);
-                endcalendar.set(Calendar.SECOND,0);
+                    int endhour = slot.getSlot_end_time()[j][0];
+                    int endmin = slot.getSlot_end_time()[j][1];
+                    Calendar endcalendar = Calendar.getInstance();
+                    endcalendar.set(Calendar.DAY_OF_WEEK, day);
+                    endcalendar.set(Calendar.HOUR_OF_DAY, endhour);
+                    endcalendar.set(Calendar.MINUTE, endmin);
+                    endcalendar.set(Calendar.SECOND, 0);
 
-                int flag=0;
-                if(Constants.CONTINOUS_CLASS_STATE==true) {
-                    for (int k = 0; k < Constants.selectedSlots.size(); k++) {
-                        slots slotCheck = Constants.selectedSlots.get(k);
-                        int[] daysCheck = slotCheck.getSlot_days();
-                        for (int l = 0; l < daysCheck.length; l++) {
-                            if (slotCheck.getSlot_days()[l] == day && slotCheck.getSlot_start_time()[l][0] == starthour + 1) {
-                                flag=1;
-                                Log.v("continous", slot.getSlot_title() + " " + daysName[slot.getSlot_days()[j] - 1] + "  " + slot.getSlot_start_time()[j][0]);
-                                break;
+                    int flag = 0;
+                    if (Constants.CONTINOUS_CLASS_STATE == true) {
+                        for (int k = 0; k < Constants.selectedSlots.size(); k++) {
+                            slots slotCheck = Constants.selectedSlots.get(k);
+                            int[] daysCheck = slotCheck.getSlot_days();
+                            for (int l = 0; l < daysCheck.length; l++) {
+                                if (slotCheck.getSlot_days()[l] == day && slotCheck.getSlot_start_time()[l][0] == starthour + 1) {
+                                    flag = 1;
+                                    Log.v("continous", slot.getSlot_title() + " " + daysName[slot.getSlot_days()[j] - 1] + "  " + slot.getSlot_start_time()[j][0]);
+                                    break;
+                                }
                             }
+                            if (flag == 1)
+                                break;
                         }
-                        if(flag==1)
-                            break;
                     }
-                }
 
-                if(flag==0) {
-                    Intent ringintent = new Intent(context, AlarmReceiver.class);
-                    ringintent.setAction(Constants.ACTION_RING);
-
-
-                    int ringRequestCode = random.nextInt();
+                    if (flag == 0) {
+                        Intent ringintent = new Intent(context, AlarmReceiver.class);
+                        ringintent.setAction(Constants.ACTION_RING);
 
 
-                    codes[1] = ringRequestCode;
-                    Log.v("codesSet", String.valueOf(dateFormat.format(endcalendar.getTimeInMillis())) + "  " + codes[1]);
-                    //Constants.pendingIntentRequestCodes.add(ringRequestCode);
-                    alarmringIntent = PendingIntent.getBroadcast(context, ringRequestCode, ringintent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        int ringRequestCode = random.nextInt();
 
-                    Log.v("CalendarSetEnd", String.valueOf(dateFormat.format(endcalendar.getTimeInMillis())));
-                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, endcalendar.getTimeInMillis()
-                            , 7 * AlarmManager.INTERVAL_DAY, alarmringIntent);
+
+                        codes[1] = ringRequestCode;
+                        Log.v("codesSet", String.valueOf(dateFormat.format(endcalendar.getTimeInMillis())) + "  " + codes[1]);
+                        //Constants.pendingIntentRequestCodes.add(ringRequestCode);
+                        alarmringIntent = PendingIntent.getBroadcast(context, ringRequestCode, ringintent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                        Log.v("CalendarSetEnd", String.valueOf(dateFormat.format(endcalendar.getTimeInMillis())));
+                        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, endcalendar.getTimeInMillis()
+                                , 7 * AlarmManager.INTERVAL_DAY, alarmringIntent);
 
                     /*if (startcalendar.getTimeInMillis() > System.currentTimeMillis()) {
                         Log.v("CalendarSetEnd", String.valueOf(dateFormat.format(endcalendar.getTimeInMillis())));
@@ -399,9 +389,10 @@ public class Constants {
                                 , 7 * AlarmManager.INTERVAL_DAY, alarmringIntent);
                     }
 */
+                    }
+                    //Log.v("codesHashmap",slot.getSlot_title()+daysName[day-1]);
+                    requestCodesMap.put(slot.getSlot_title() + daysName[day - 1], codes);
                 }
-                //Log.v("codesHashmap",slot.getSlot_title()+daysName[day-1]);
-                requestCodesMap.put(slot.getSlot_title()+daysName[day-1],codes);
             }
         }
         for(int[] k:requestCodesMap.values()){
